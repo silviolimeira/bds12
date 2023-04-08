@@ -1,0 +1,10 @@
+Environment Setup:
+$ export PATH=/d/projeto-novo/nvm-noinstall:/d/nodejs-nvm/:$PATH
+
+Install nvm Node:
+$ nvm install 14.18.2
+
+instalar React Select:
+https://react-select.com/home
+
+yarn add react-select @types/react-select 
