@@ -6,6 +6,17 @@ export const formatPrice = (price: number) => {
   }).format(price);
 };
 
+export const formatPercent = (value: number | string | number[]) => {
+  let tmp = Number(value);
+  tmp = tmp / 100;
+  return new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+    style: 'percent',
+    currency: 'BRL'
+  }).format(tmp);
+}
+
 export const formatDate = (date: Date | string) => {
   return new Date(date).toLocaleDateString();
 };

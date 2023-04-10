@@ -1,21 +1,32 @@
-import { SalesByPaymentMethod, SalesByStore } from './types';
+import { Gender, SalesByGender } from "./types";
+import { formatPercent } from "./utils/formatters";
 
-export const buildSalesByStoreChart = (sales: SalesByStore[]) => {
-  const labels = sales.map((sale) => sale.storeName);
-  const series = sales.map((sale) => sale.sum);
-
-  return {
-    labels,
-    series
-  };
+const formatGender = (gender: Gender) => {
+    const textByGender = {
+        MALE: 'Masculino',
+        FEMALE: 'Feminino',
+        OTHER: 'Outros'
+    };
+    return textByGender[gender];
 };
 
-export const buildSalesByPaymentMethod = (sales: SalesByPaymentMethod[]) => {
-  const labels = sales.map((sale) => sale.description);
-  const series = sales.map((sale) => sale.sum);
 
-  return {
-    labels,
-    series
-  };
+export const buildSalesByStoreChart = (sales: SalesByGender[]) => {
+    const labels = sales.map((sale) => formatGender(sale.gender));
+    let series = sales.map((sale) => sale.sum);
+    const sum = series.reduce((pv, cv) => {
+        return pv + cv;
+    })
+    series = series.map((serie) => {
+        return (Number(serie) / sum) * 100;
+    });
+    return {
+        labels,
+        series,
+        sum
+    };
 };
+
+
+
+

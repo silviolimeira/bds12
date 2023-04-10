@@ -1,28 +1,59 @@
 .filter-container {
-  margin-top: 30px;
-  margin-bottom: 40px;
-  height: 80px;
+  background: #fff;
+  background-color: #fff;
+  color: #8d8d8d;
+  margin: 40px 15px;
+}
+
+.store-filter-select__indicator-separator {
+  visibility: hidden;
+}
+
+.store-filter-select__indicator .store-filter-select__clear-indicator {
+  color: #8d8d8d !important;
+}
+
+.store-filter-select__single-value {
+  color: #8d8d8d !important;
+}
+
+.store-filter-select__control {
+  height: 50px;
+
+  background: #fff !important;
+  background-color: #fff !important;
+  box-sizing: border-box;
+  border: 1px solid #8d8d8d;
+  border-radius: 4px;
+}
+
+.store-filter-select__value-container {
+  background: #fff !important;
+  background-color: #fff !important;
+}
+
+.store-filter-select__indicators {
+  background: #fff !important;
+  background-color: #fff !important;
+}
+
+.store-filter-select__value-container {
+  background: #fff !important;
+  background-color: #fff !important;
+}
+
+.store-filter-select__value-container
+  .store-filter-select__value-container--has-value {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
   display: flex;
   align-items: center;
-  padding: 30px;
-}
+  letter-spacing: -0.015em;
 
-.filter-input {
-  height: 45px;
-  background-color: var(--secondary-color);
-  color: var(--grey-light-50-color);
-  font-size: 16px;
-  border: 1px solid var(--grey-light-150-color);
-  border-radius: 10px;
-  width: 250px;
-  padding: 12px 5px 12px 20px;
-}
+  color: #8d8d8d;
 
-.filter-input:first-of-type {
-  margin-right: 55px;
-}
-
-.filter-input::placeholder {
-  font-size: 16px;
-  color: var(--grey-light-50-color);
+  mix-blend-mode: normal;
 }

@@ -1,11 +1,57 @@
 .app-container {
-  padding: 0 55px;
-}
+  padding: 0;
+  margin: 0;
+  background-color: #e5e5e5;
 
-.sales-overview-container {
   display: flex;
-  justify-content: space-between;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  flex-direction: column;
+  align-content: center;
 }
 
+.app-filter-container {
+  /*margin-top: 10px;*/
+  margin-bottom: 10px;
+  width: 300px;
+  height: 130px;
+  background: #ffffff;
+  border-radius: 5px;
+}
+
+.app-sales-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 5px;
+
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+.app-sales-sum {
+  margin-bottom: 10px;
+}
+
+.app-sales-sum-value {
+  padding-left: 15px;
+  padding-top: 40px;
+
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 41px;
+  display: flex;
+  align-items: center;
+  color: #334ac4;
+}
+
+.app-sales-sum-title {
+  padding-left: 15px;
+
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #8d8d8d;
+}

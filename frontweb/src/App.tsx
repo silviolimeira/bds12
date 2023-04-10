@@ -1,15 +1,31 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import './App.css';
 import Filter from './components/filter';
 import Header from './components/header';
+import { FilterData, PieChartConfig, SalesByGender } from './types';
 import PieChartCard from './components/pie-chart-card';
-import SalesByDate from './components/sales-by-date';
-import SalesSummary from './components/sales-summary';
-import SalesTable from './components/sales-table';
-import { FilterData } from './types';
+import { buildFilterParams, makeRequest } from './utils/request';
+import { buildSalesByStoreChart } from './helpers';
+import { formatPrice } from './utils/formatters';
 
 function App() {
   const [filterData, setFilterData] = useState<FilterData>();
+  const [salesByGender, setSalesByGender] = useState<PieChartConfig>();
+
+  const params = useMemo(() => buildFilterParams(filterData), [filterData]);
+  //const data = useMemo(() => buildSalesByStoreChart(salesByGender), [SalesByGender]);
+
+  useEffect(() => {
+    makeRequest
+      .get<SalesByGender[]>('/sales/by-gender', { params })
+      .then((response) => {
+        const newSalesByGender = buildSalesByStoreChart(response.data);
+        setSalesByGender(newSalesByGender);
+      })
+      .catch(() => {
+        console.error('Error to fetch sales by store');
+      });
+  }, [params]);
 
   const onFilterChange = (filter: FilterData) => {
     setFilterData(filter);
@@ -19,22 +35,16 @@ function App() {
     <>
       <Header />
       <div className="app-container">
-        <Filter onFilterChange={onFilterChange} />
-        <SalesByDate filterData={filterData} />
-        <div className="sales-overview-container">
-          <SalesSummary filterData={filterData} />
-          <PieChartCard
-            name="Lojas"
-            labels={['Uberlância', 'Araguari', 'Uberaba']}
-            series={[40, 30, 30]}
-          />
-          <PieChartCard
-            name="Pagamento"
-            labels={['Crédito', 'Débito', 'Uberaba']}
-            series={[20, 50, 30]}
-          />
+        <div className="app-filter-container">
+          <Filter onFilterChange={onFilterChange} />
         </div>
-        <SalesTable />
+        <div className="app-sales-container ">
+          <div className="app-sales-sum">
+            <span className="app-sales-sum-value">{salesByGender?.sum && (formatPrice(salesByGender?.sum))}</span>
+            <span className="app-sales-sum-title">Total de vendas</span>
+          </div>
+          {salesByGender?.labels && (<PieChartCard key={params.storeId} labels={salesByGender?.labels} series={salesByGender?.series} />)}
+        </div>
       </div>
     </>
   );
