@@ -11,6 +11,9 @@ export const makeRequest = axios.create({
 export const buildFilterParams = (
   filterData?: FilterData,
 ) => {
+  if (filterData?.store === null) {
+    return { storeId: '0' }
+  }
   return {
     storeId: filterData?.store.id,
   };

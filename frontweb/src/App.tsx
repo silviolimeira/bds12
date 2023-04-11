@@ -13,7 +13,6 @@ function App() {
   const [salesByGender, setSalesByGender] = useState<PieChartConfig>();
 
   const params = useMemo(() => buildFilterParams(filterData), [filterData]);
-  //const data = useMemo(() => buildSalesByStoreChart(salesByGender), [SalesByGender]);
 
   useEffect(() => {
     makeRequest

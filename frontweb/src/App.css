@@ -2,10 +2,11 @@
   padding: 0;
   margin: 0;
   background-color: #e5e5e5;
-
+  background: #e5e5e5;
   display: flex;
   flex-direction: column;
   align-content: center;
+  align-items: center;
 }
 
 .app-filter-container {
@@ -54,4 +55,67 @@
   font-size: 18px;
   line-height: 21px;
   color: #8d8d8d;
+}
+
+@media (min-width: 576px) {
+  .app-filter-container {
+    margin: 40px;
+    width: 496px;
+  }
+
+  .app-sales-container {
+    margin: 40px;
+    width: 496px;
+  }
+
+  .app-sales-sum-value {
+    margin-left: 40px;
+  }
+  .app-sales-sum-title {
+    margin-left: 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  .app-filter-container {
+    margin: 40px;
+    width: 698px;
+  }
+
+  .app-sales-container {
+    margin: 40px;
+    width: 698px;
+  }
+
+  .app-sales-sum-value {
+    margin-left: 40px;
+  }
+  .app-sales-sum-title {
+    margin-left: 40px;
+  }
+}
+
+@media (min-width: 992px) {
+  .app-sales-container {
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+  }
+  .app-filter-container {
+    margin: 40px;
+    width: 960px;
+    padding-left: 40px;
+  }
+
+  .app-sales-container {
+    margin: 40px;
+    width: 960px;
+  }
+
+  .app-sales-sum-value {
+    margin-left: 40px;
+  }
+  .app-sales-sum-title {
+    margin-left: 40px;
+  }
 }

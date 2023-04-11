@@ -10,6 +10,7 @@ import Select from 'react-select';
 import { buildFilterParams, makeRequest } from '../../utils/request';
 
 flatpickrlib.localize(Portuguese);
+let storesData: Store[];
 
 type Props = {
   onFilterChange: (filter: FilterData) => void;
@@ -21,8 +22,13 @@ function Filter({ onFilterChange }: Props) {
 
   const { control } = useForm<FilterData>();
 
+
+  //const [filterData, setFilterData] = useState<FilterData>();
+  //const params = useMemo(() => buildFilterParams(filterData), [filterData]);
+
   useEffect(() => {
     makeRequest({ url: '/stores' }).then((response) => {
+      storesData = response.data;
       setSelectStores(response.data);
     });
   }, []);
