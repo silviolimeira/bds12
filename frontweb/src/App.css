@@ -61,6 +61,7 @@
   .app-filter-container {
     margin: 40px;
     width: 496px;
+    padding-left: 40px;
   }
 
   .app-sales-container {
